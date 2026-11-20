@@ -1,4 +1,4 @@
-"""Merge raw public datasets into one labeled CSV.
+﻿"""Merge raw public datasets into one labeled CSV.
 
 Expected layout under --raw (see data/README.md for download links):
 
@@ -52,7 +52,7 @@ def iter_spamassassin(root: Path):
                 continue
             try:
                 yield _row("spamassassin", label, parse_eml_bytes(path.read_bytes()))
-            except ParseError:
+            except (ParseError, OSError):
                 yield None
 
 
@@ -76,7 +76,7 @@ def iter_nazario(root: Path):
         for item in mailbox.mbox(str(path)):
             try:
                 yield _row("nazario", "phishing", parse_eml_bytes(item.as_bytes()))
-            except ParseError:
+            except (ParseError, OSError):
                 yield None
 
 
@@ -84,7 +84,7 @@ def iter_eml_dir(root: Path, source: str, label: str):
     for path in sorted(root.rglob("*.eml")):
         try:
             yield _row(source, label, parse_eml_bytes(path.read_bytes()))
-        except ParseError:
+        except (ParseError, OSError):
             yield None
 
 
@@ -143,3 +143,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
