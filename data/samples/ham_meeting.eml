@@ -1,0 +1,17 @@
+From: Alice Smith <alice@example.com>
+To: team@example.com
+Return-Path: <alice@example.com>
+Subject: Weekly planning meeting
+Date: Mon, 16 Nov 2026 08:30:00 +0000
+Message-ID: <ham-001@example.test>
+Authentication-Results: mx.example.com; spf=pass; dkim=pass; dmarc=pass
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hi team,
+
+Reminder that the weekly planning meeting is tomorrow at 10:00 in room 4.
+The agenda is in the shared folder.
+
+Thanks,
+Alice
